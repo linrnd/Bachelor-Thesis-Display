@@ -13,3 +13,51 @@ body {
 #threejs-canvas {
     background-color: white; /* Or any desired color */
 }
+
+/* Info icon tooltip */
+.info-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.8);
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+.info-icon:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: #fff;
+    color: #fff;
+}
+.info-icon .tooltip {
+    position: absolute;
+    bottom: 45px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.info-icon:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
