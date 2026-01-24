@@ -22,9 +22,9 @@ body {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    color: rgba(255, 255, 255, 0.8);
+    background: rgba(150, 150, 150, 0.3);
+    border: 2px solid rgba(100, 100, 100, 0.6);
+    color: #666;
     font-family: Georgia, serif;
     font-size: 18px;
     font-style: italic;
@@ -36,9 +36,9 @@ body {
     z-index: 1000;
 }
 .info-icon:hover {
-    background: rgba(255, 255, 255, 0.3);
-    border-color: #fff;
-    color: #fff;
+    background: rgba(100, 100, 100, 0.4);
+    border-color: #555;
+    color: #333;
 }
 .info-icon .tooltip {
     position: absolute;
