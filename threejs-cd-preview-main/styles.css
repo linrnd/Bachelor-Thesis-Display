@@ -17,8 +17,8 @@ body {
 /* Info icon tooltip */
 .info-icon {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    top: 20px;
+    left: 20px;
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -42,8 +42,8 @@ body {
 }
 .info-icon .tooltip {
     position: absolute;
-    bottom: 45px;
-    right: 0;
+    top: 45px;
+    left: 0;
     background: rgba(0, 0, 0, 0.85);
     color: #fff;
     padding: 12px 16px;
