@@ -192,7 +192,8 @@ function BuildScene()
         map: cdTex,
         transparent: true,   // shows your blur glow
         depthWrite: false,   // avoids holes in transparency
-        side: THREE.BackSide
+        side: THREE.BackSide,
+        alphaTest: 0.01      // removes border artifacts on transparent edges
     });
     
     const cdMesh = new THREE.Mesh(cdGeom, cdDisplayMat);

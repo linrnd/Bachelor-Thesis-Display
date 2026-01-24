@@ -119,7 +119,8 @@ function BuildScene()
         map: cdTex,
         transparent: true,
         depthWrite: false,
-        side: THREE.BackSide
+        side: THREE.BackSide,
+        alphaTest: 0.01      // removes border artifacts on transparent edges
     });
 
     const cdMesh = new THREE.Mesh(cdGeom, cdDisplayMat);
