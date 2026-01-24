@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triquetra Pattern</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        svg {
+            background-color: #000;
+        }
+        .curve {
+            fill: none;
+            stroke: #333;
+            stroke-width: 2;
+        }
+        .curve-glow {
+            fill: none;
+            stroke: white;
+            stroke-width: 3;
+            filter: url(#glow);
+        }
+        .area-label {
+            fill: #fff;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            text-anchor: middle;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .area-label:hover {
+            fill:#0078d6;
+            letter-spacing: 5px;
+            filter: url(#textGlow);
+        }
+        .star {
+            fill: #fff;
+            filter: url(#starGlow);
+        }
+    </style>
+</head>
+<body>
+    <svg id="triquetra"></svg>
+
+    <script>
+        const svg = d3.select("#triquetra");
+
+        // Store star positions (generated once, scaled on resize)
+        const numStars = 50;
+        const starData = [];
+        for (let i = 0; i < numStars; i++) {
+            starData.push({
+                xRatio: Math.random(),
+                yRatio: Math.random(),
+                size: Math.random() * 1.5 + 0.5,
+                opacity: Math.random() * 0.5 + 0.5
+            });
+        }
+
+        let animationId = null;
+
+        function draw() {
+            // Clear SVG
+            svg.selectAll("*").remove();
+
+            // Get current dimensions
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            svg.attr("width", width).attr("height", height);
+
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const patternSize = Math.min(width, height) * 0.85;
+
+            // Add all filters to defs
+            const defs = svg.append("defs");
+
+            // Star glow filter
+            const starFilter = defs.append("filter")
+                .attr("id", "starGlow")
+                .attr("x", "-100%").attr("y", "-100%")
+                .attr("width", "300%").attr("height", "300%");
+            starFilter.append("feGaussianBlur").attr("stdDeviation", "2").attr("result", "coloredBlur");
+            const starMerge = starFilter.append("feMerge");
+            starMerge.append("feMergeNode").attr("in", "coloredBlur");
+            starMerge.append("feMergeNode").attr("in", "SourceGraphic");
+
+            // Text glow filter
+            const textFilter = defs.append("filter")
+                .attr("id", "textGlow")
+                .attr("x", "-50%").attr("y", "-50%")
+                .attr("width", "200%").attr("height", "200%");
+            textFilter.append("feGaussianBlur").attr("stdDeviation", "3").attr("result", "textBlur");
+            const textMerge = textFilter.append("feMerge");
+            textMerge.append("feMergeNode").attr("in", "textBlur");
+            textMerge.append("feMergeNode").attr("in", "SourceGraphic");
+
+            // LED glow filter
+            const glowFilter = defs.append("filter")
+                .attr("id", "glow")
+                .attr("x", "-50%").attr("y", "-50%")
+                .attr("width", "200%").attr("height", "200%");
+            glowFilter.append("feGaussianBlur").attr("stdDeviation", "6").attr("result", "coloredBlur");
+            const glowMerge = glowFilter.append("feMerge");
+            glowMerge.append("feMergeNode").attr("in", "coloredBlur");
+            glowMerge.append("feMergeNode").attr("in", "SourceGraphic");
+
+            // Draw stars
+            starData.forEach(star => {
+                svg.append("circle")
+                    .attr("class", "star")
+                    .attr("cx", star.xRatio * width)
+                    .attr("cy", star.yRatio * height)
+                    .attr("r", star.size)
+                    .attr("opacity", star.opacity);
+            });
+
+            // Triangle calculations
+            const radius = patternSize * 0.45;
+            const points = {
+                p1: { x: centerX, y: centerY - radius },
+                p2: { x: centerX - radius * Math.cos(Math.PI / 6), y: centerY + radius * Math.sin(Math.PI / 6) },
+                p3: { x: centerX + radius * Math.cos(Math.PI / 6), y: centerY + radius * Math.sin(Math.PI / 6) }
+            };
+
+            const curveRadius = radius * 1.9;
+
+            function createArc(start, end, bulgeAmount) {
+                const midX = (start.x + end.x) / 2;
+                const midY = (start.y + end.y) / 2;
+                const dx = end.x - start.x;
+                const dy = end.y - start.y;
+                const len = Math.sqrt(dx * dx + dy * dy);
+                const perpX = -dy / len;
+                const perpY = dx / len;
+                const ctrlX = midX + perpX * bulgeAmount;
+                const ctrlY = midY + perpY * bulgeAmount;
+                return `M ${start.x} ${start.y} Q ${ctrlX} ${ctrlY} ${end.x} ${end.y}`;
+            }
+
+            function getControlPoint(start, end, bulgeAmount) {
+                const midX = (start.x + end.x) / 2;
+                const midY = (start.y + end.y) / 2;
+                const dx = end.x - start.x;
+                const dy = end.y - start.y;
+                const len = Math.sqrt(dx * dx + dy * dy);
+                const perpX = -dy / len;
+                const perpY = dx / len;
+                return { x: midX + perpX * bulgeAmount, y: midY + perpY * bulgeAmount };
+            }
+
+            const bulge = -curveRadius * 0.8;
+
+            // Draw curves
+            svg.append("path").attr("class", "curve").attr("d", createArc(points.p1, points.p2, bulge));
+            svg.append("path").attr("class", "curve").attr("d", createArc(points.p2, points.p3, bulge));
+            svg.append("path").attr("class", "curve").attr("d", createArc(points.p3, points.p1, bulge));
+
+            // Area labels
+            svg.append("a").attr("href", "intro.html")
+                .append("text").attr("class", "area-label")
+                .attr("x", centerX).attr("y", centerY - radius * 0.35).text("Bachelor thesis");
+
+            svg.append("a").attr("href", "about.html")
+                .append("text").attr("class", "area-label")
+                .attr("x", centerX).attr("y", centerY + 5).text("About me");
+
+            svg.append("a").attr("href", "threejs-cd-preview-main/index-white.html")
+                .append("text").attr("class", "area-label")
+                .attr("x", centerX - radius * 0.45).attr("y", centerY + radius * 0.25).text("White version");
+
+            svg.append("a").attr("href", "threejs-cd-preview-main/index.html")
+                .append("text").attr("class", "area-label")
+                .attr("x", centerX + radius * 0.45).attr("y", centerY + radius * 0.25).text("Black version");
+
+            // LED path
+            const ctrl23 = getControlPoint(points.p2, points.p3, bulge);
+            const ctrl31 = getControlPoint(points.p3, points.p1, bulge);
+            const ctrl12 = getControlPoint(points.p1, points.p2, bulge);
+
+            const ledPath = `M ${points.p2.x} ${points.p2.y}
+                             Q ${ctrl23.x} ${ctrl23.y} ${points.p3.x} ${points.p3.y}
+                             Q ${ctrl31.x} ${ctrl31.y} ${points.p1.x} ${points.p1.y}
+                             Q ${ctrl12.x} ${ctrl12.y} ${points.p2.x} ${points.p2.y}`;
+
+            const glowPath = svg.append("path").attr("class", "curve-glow").attr("d", ledPath);
+
+            const pathLength = glowPath.node().getTotalLength();
+            const segmentLength = pathLength * 0.35;
+
+            glowPath.attr("stroke-dasharray", `${segmentLength} ${pathLength}`).attr("stroke-dashoffset", 0);
+
+            // Cancel previous animation
+            if (animationId) cancelAnimationFrame(animationId);
+
+            // LED animation
+            const duration = 6000;
+            const startTime = performance.now();
+
+            function animateLED() {
+                const elapsed = (performance.now() - startTime) % duration;
+                const progress = elapsed / duration;
+                glowPath.attr("stroke-dashoffset", -progress * pathLength);
+                animationId = requestAnimationFrame(animateLED);
+            }
+
+            animateLED();
+        }
+
+        // Initial draw
+        draw();
+
+        // Redraw on resize
+        window.addEventListener("resize", draw);
+    </script>
+</body>
+</html>

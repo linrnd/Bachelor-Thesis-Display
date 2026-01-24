@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Nico Reski">
+        <title>Cylindrical Display Preview - White</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- external style sheet reference -->
+        <link rel="stylesheet" href="styles.css">
+
+        <!-- import map for JavaScript module handling -->
+        <script type="importmap">
+            {
+                "imports": {
+                    "three": "./lib/threejs/three.module.min.js",
+                    "three/addons/": "./lib/threejs/addons/"
+				}
+			}
+		</script>
+
+        <!-- external JavaScript reference -->
+        <script type="module" src="scripts-white.js"></script>
+    </head>
+
+    <body>
+        <canvas id="threejs-canvas"></canvas>
+    </body>
+</html>

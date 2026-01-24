@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datasets</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Manrope', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        .sidebar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .sidebar a {
+            color: #666;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        .sidebar a:hover {
+            color: #0078d6;
+        }
+        .sidebar a.active {
+            color: #fff;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+            padding-top: 10vh;
+        }
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
+        .back-link:hover {
+            color: #0078d6;
+        }
+        .cover-image {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
+        }
+        .description {
+            font-size: 18px;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #ccc;
+            text-align: justify;
+        }
+        .description .highlight {
+            color: #0078d6;
+            font-weight: 400;
+        }
+        .description ul {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        .description li {
+            margin-bottom: 10px;
+        }
+        .description p {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <a href="triquetra.html" class="back-link">&larr; BACK</a>
+
+    <nav class="sidebar">
+        <a href="intro.html">Bachelor Thesis</a>
+        <a href="contest.html">Graph Drawing Contest 2025</a>
+        <a href="datasets.html" class="active">Datasets</a>
+        <a href="goals.html">Goals</a>
+        <a href="five-graphs.html">Five Graphs</a>
+        <a href="tools.html">Tools</a>
+        <a href="decorations.html">Decorations</a>
+        <a href="literature.html">Literature</a>
+    </nav>
+
+    <div class="container">
+        <img src="page-3.png" alt="Datasets" class="cover-image">
+        <img src="page-4.png" alt="Datasets" class="cover-image">
+        <div class="description">
+            <p>The project utilizes two datasets provided from the <span class="highlight">Graph Drawing Contest</span>. 
+                These datasets represent key narrative and structural elements of the German television series Dark. ark is a science fiction
+thriller that explores themes of time travel, fate, and family secrets. One dataset contains all of the edges (relationships), the second dataset contains all events, both are in CSV format. 
+           
+            <p>To make the visualization process smoother and the narrative more understandable, I cleaned and organized these datasets with different tools before drawing a graph with D3.js. This would make it easier to analyze the story logic and visually communicate it in the graph.</p>
+        </div>
+    </div>
+</body>
+</html>

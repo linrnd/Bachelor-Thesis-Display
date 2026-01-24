@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Drawing Contest 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Manrope', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px 80px 20px;
+        }
+        .sidebar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .sidebar a {
+            color: #666;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        .sidebar a:hover {
+            color: #0078d6;
+        }
+        .sidebar a.active {
+            color: #fff;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+            padding-top: 10vh;
+        }
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
+        .back-link:hover {
+            color: #0078d6;
+        }
+        .cover-image {
+            width: 80%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
+        }
+        .description {
+            font-size: 18px;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #ccc;
+            text-align: justify;
+        }
+          .description .highlight {
+            color: #0078d6;
+            font-weight: 400;
+        }
+             .description .highlight2 {
+            color: #0078d6;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <a href="triquetra.html" class="back-link">&larr; BACK</a>
+
+    <nav class="sidebar">
+        <a href="intro.html">Bachelor Thesis</a>
+        <a href="contest.html" class="active">Graph Drawing Contest 2025</a>
+        <a href="datasets.html">Datasets</a>
+        <a href="goals.html">Goals</a>
+        <a href="five-graphs.html">Five Graphs</a>
+        <a href="tools.html">Tools</a>
+        <a href="decorations.html">Decorations</a>
+        <a href="literature.html">Literature</a>
+    </nav>
+
+    <div class="container">
+        <img src="norrkoping-arena.jpg" alt="Graph Drawing Contest 2025" class="cover-image">
+        <img src="cd-preview-teaser.png" 
+        alt="Graph Drawing Contest 2025" class="cover-image">
+        <p class="description">
+ <span class="highlight">The poster presenting the results of my bachelor's thesis was submitted to the 
+ Graph Drawing Contest 2025, made it to the final selection, and took 4th place.  </span>
+
+This project idea originates from the Graph Drawing Contest 2025:
+ Creative Topic, organized by the Symposium on Graph Drawing and
+  Network Visualization. This symposium has been the leading annual event in the field for more than 30 years, with a strong focus on the combinatorial and algorithmic aspects of graph drawing, as well as the design of network visualization systems and interfaces        
+
+
+<span class="highlight2">The final submission must be delivered as a high-resolution PNG 
+ image with a resolution of 12288 × 1200 pixels, 
+ an aspect ratio of 10.24:1.</span> is because the final poster will be displayed at the Norrköping Decision Arena (see the first picture)in Sweden, a state-of-the-art facility featuring a 360-degree screen. 
+ This setup allows the audience to fully immerse themselves in the graph drawing visualizations. This unique display format had a significant influence on the design of my poster and will be discussed in detail in the chapter 4 of this thesis.
+
+ Thanks to Nico Reski, who created a Three.js-based preview system, it was possible to preview the final poster in a 360-degree setting (see second picture). By simulating how it would appear in the Norrköping Decision Arena, the poster could be modified and adjusted for better visualization.
+        </p>
+    </div>
+</body>
+</html>

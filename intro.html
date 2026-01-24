@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro - A Creative Approach to Visualizing Complex Networks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Manrope', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        .sidebar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .sidebar a {
+            color: #666;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        .sidebar a:hover {
+            color: #0078d6;
+        }
+        .sidebar a.active {
+            color: #fff;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+            padding-top: 10vh;
+        }
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
+        .back-link:hover {
+            color: #0078d6;
+        }
+        .cover-image {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
+        }
+        .description {
+            font-size: 18px;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #ccc;
+            text-align: justify;
+        }
+        .description .thesis-title {
+            color: #fff;
+            font-weight: 500;
+        }
+        .description .highlight {
+            color: #0078d6;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <a href="triquetra.html" class="back-link">&larr; BACK</a>
+
+    <nav class="sidebar">
+        <a href="intro.html" class="active">Bachelor Thesis</a>
+        <a href="contest.html">Graph Drawing Contest 2025</a>
+        <a href="datasets.html">Datasets</a>
+        <a href="goals.html">Goals</a>
+        <a href="five-graphs.html">Five Graphs</a>
+        <a href="tools.html">Tools</a>
+        <a href="decorations.html">Decorations</a>
+        <a href="literature.html">Literature</a>
+    </nav>
+
+    <div class="container">
+        <img src="intro-cover.png" alt="Thesis Cover" class="cover-image">
+
+        <p class="description">
+            This Bachelor thesis: <span class="thesis-title">A Creative 
+                Approach to Visualizing Complex Networks 
+                for Non-Linear Storytelling</span>, explores the field of <span class="highlight">graph drawing</span>, it is a field that uses diagrams to visualize the relationships within a network of data points. A graph consists of vertices and edges: a vertex, also called a node, represents an entity, while edges represent the connections between these vertices. Graph drawing focuses on arranging vertices and edges in a way that makes the graphs easier to understand and more informative. Combining mathematics and computer science, it leverages knowledge from both areas to find the most effective way to represent complex data visually. The applications of graph drawing span many fields, including social network analysis, cartography, linguistics, and bioinformatics.
+        </p>
+    </div>
+</body>
+</html>

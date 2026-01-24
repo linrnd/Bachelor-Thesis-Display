@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Manrope', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        .sidebar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .sidebar a {
+            color: #666;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        .sidebar a:hover {
+            color: #0078d6;
+        }
+        .sidebar a.active {
+            color: #fff;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+            padding-top: 10vh;
+        }
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
+        .back-link:hover {
+            color: #0078d6;
+        }
+        .cover-image {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <a href="triquetra.html" class="back-link">&larr; BACK</a>
+
+    <nav class="sidebar">
+        <a href="intro.html">Bachelor Thesis</a>
+        <a href="contest.html">Graph Drawing Contest 2025</a>
+        <a href="datasets.html">Datasets</a>
+        <a href="goals.html" class="active">Goals</a>
+        <a href="five-graphs.html">Five Graphs</a>
+        <a href="tools.html">Tools</a>
+        <a href="decorations.html">Decorations</a>
+        <a href="literature.html">Literature</a>
+    </nav>
+
+    <div class="container">
+        <h1 style="font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 4px; margin-bottom: 40px;">Goals</h1>
+        <div style="font-size: 18px; line-height: 1.8; font-weight: 300; color: #ccc;">
+           The expected output of the project is a high-quality visualization, which should fulfill the
+following criteria:
+<p>• Produce a very wide images, with a resolution of 12288 x 1200 pixels. This is a 10.24:1
+aspect ratio, which is suitable for the 360-degree screen .</p>
+<p>• The visualization must be functional, serving the purpose of storytelling while remaining
+clear, informative, and uncluttered, it should enable viewers to discover patterns or
+connections that are not explicitly visible in the raw datasets. The greatest value of a
+picture is when it forces us to notice what we never expected to see. In addition,
+the functionality of a graph can also contribute to its aesthetic appeal. </p>
+<p>• The output should be sightful, going beyond a basic graph representation to convey
+meaning and even emotions in a way that makes it memorable to the viewer. 
+<P>• Besides supporting practical concerns, the final result must also be aesthetically pleasing.</P>
+<p>• This project aims to explore and evaluate scripting and visualization tools, such as
+Cytoscape , by testing them within a real-world project. The objective is to compare
+their functionalities and derive a conclusion on how they can be effectively combined in
+practice for graph drawing.</p>
+<p>• This project explores how graph drawing and network visualization can be used to support
+and promote research in the applied field of social science, as mentioned in the introduction.
+It investigates how graph drawing techniques can be employed to analyze and interact
+with relational datasets more effectively and creatively.
+</div>
+    </div>
+</body>
+</html>
