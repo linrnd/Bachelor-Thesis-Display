@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Lin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Manrope', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-picture {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 30px;
+            display: block;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .content {
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 1.8;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #ccc;
+        }
+
+        .content p {
+            margin-bottom: 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 30px;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            border: 2px solid #fff;
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .back-link:hover {
+            background-color: #fff;
+            color: #000;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 600px) {
+            .profile-picture {
+                width: 200px;
+                height: 200px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .content {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="photo_5449625651481612367_y.jpg" alt="Lin's Profile Picture" class="profile-picture">
+
+        <h1>About Me</h1>
+
+        <div class="content">
+            <p>
+                Hello, my name is Lin. I recently completed my second bachelor's degree in computer science at Stuttgart University of Applied Sciences. I speak English and German well.
+            </p>
+            <p>
+                I would describe myself as a very creative person with boundless imagination.
+                I love drawing, psychology, and history. I want to combine my other hobbies with computer science to develop high-quality IT products for society with joy and passion.
+            </p>
+        </div>
+
+        <a href="triquetra.html" class="back-link">Back to Home ♥</a>
+    </div>
+</body>
+</html>
