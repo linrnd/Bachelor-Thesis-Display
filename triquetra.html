@@ -33,16 +33,13 @@
         .area-label {
             fill: #fff;
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 18px;
             text-anchor: middle;
             cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 3px;
+            transition: fill 0.3s ease, filter 0.3s ease;
             text-transform: uppercase;
         }
         .area-label:hover {
             fill: #0078d6;
-            letter-spacing: 5px;
             filter: url(#textGlow);
         }
         .star {
@@ -169,22 +166,52 @@
             svg.append("path").attr("class", "curve").attr("d", createArc(points.p2, points.p3, bulge));
             svg.append("path").attr("class", "curve").attr("d", createArc(points.p3, points.p1, bulge));
 
-            // Area labels
-            svg.append("a").attr("href", "intro.html")
-                .append("text").attr("class", "area-label")
-                .attr("x", centerX).attr("y", centerY - radius * 0.40).text("Bachelor thesis");
+            // Scale font size and letter-spacing with pattern size
+            const fontSize = Math.max(10, Math.min(18, patternSize * 0.024));
+            const letterSpacing = width < 480 ? 1 : 3;
+            const lineHeight = fontSize * 1.3;
 
-            svg.append("a").attr("href", "about.html")
-                .append("text").attr("class", "area-label")
-                .attr("x", centerX).attr("y", centerY + 5).text("About me");
+            function addLabel(href, x, y, lines) {
+                const a = svg.append("a").attr("href", href);
+                const text = a.append("text")
+                    .attr("class", "area-label")
+                    .attr("x", x)
+                    .attr("y", y)
+                    .attr("font-size", fontSize)
+                    .attr("letter-spacing", letterSpacing);
+                if (lines.length === 1) {
+                    text.text(lines[0]);
+                } else {
+                    lines.forEach((line, i) => {
+                        text.append("tspan")
+                            .attr("x", x)
+                            .attr("dy", i === 0 ? 0 : lineHeight)
+                            .text(line);
+                    });
+                }
+            }
 
-            svg.append("a").attr("href", "threejs-cd-preview-main/index-white.html")
-                .append("text").attr("class", "area-label")
-                .attr("x", centerX - radius * 0.45).attr("y", centerY + radius * 0.25).text("White version");
+            const isMobile = width < 500;
 
-            svg.append("a").attr("href", "threejs-cd-preview-main/index.html")
-                .append("text").attr("class", "area-label")
-                .attr("x", centerX + radius * 0.45).attr("y", centerY + radius * 0.25).text("Black version");
+            addLabel("intro.html",
+                centerX,
+                centerY - radius * (isMobile ? 0.46 : 0.40),
+                isMobile ? ["Bachelor", "Thesis"] : ["Bachelor thesis"]);
+
+            addLabel("about.html",
+                centerX,
+                centerY + fontSize * 0.4,
+                ["About me"]);
+
+            addLabel("threejs-cd-preview-main/index-white.html",
+                centerX - radius * 0.45,
+                centerY + radius * (isMobile ? 0.22 : 0.25),
+                isMobile ? ["White", "Version"] : ["White version"]);
+
+            addLabel("threejs-cd-preview-main/index.html",
+                centerX + radius * 0.45,
+                centerY + radius * (isMobile ? 0.22 : 0.25),
+                isMobile ? ["Black", "Version"] : ["Black version"]);
 
             // LED path
             const ctrl23 = getControlPoint(points.p2, points.p3, bulge);
